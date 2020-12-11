@@ -1,0 +1,21 @@
+{
+    "name": "sparkinzy/kwaishop-sdk",
+    "description": "快手电商SDK",
+    "type": "library",
+    "require": {
+        "hanson/foundation-sdk": "^4.0"
+    },
+    "autoload": {
+        "classmap": [
+            {
+                "Sparkinzy\\KwaishopSdk": "src"
+            }
+        ]
+    },
+    "authors": [
+        {
+            "name": "正义",
+            "email": "sparkinzy@163.com"
+        }
+    ]
+}
