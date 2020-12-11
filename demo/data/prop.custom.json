@@ -1,0 +1,44 @@
+[
+  {
+    "propId": 36672967439,
+    "propName": "颜色",
+    "categoryId": 1715
+  },
+  {
+    "propId": 36673175139,
+    "propName": "尺码",
+    "categoryId": 1715,
+    "propValues": [
+      {
+        "propId":36673175139,
+        "propValueId":54210324639,
+        "propValueName": 35
+      },
+      {
+        "propId":36673175139,
+        "propValueId":54210324839,
+        "propValueName": 36
+      },
+      {
+        "propId":36673175139,
+        "propValueId":54210325139,
+        "propValueName": 37
+      },
+      {
+        "propId":36673175139,
+        "propValueId":54210325239,
+        "propValueName": 38
+      },
+      {
+        "propId":36673175139,
+        "propValueId":54210325339,
+        "propValueName": 39
+      },
+      {
+        "propId":36673175139,
+        "propValueId":54210325539,
+        "propValueName": 40
+      }
+    ]
+  }
+]
