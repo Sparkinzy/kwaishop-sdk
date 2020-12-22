@@ -2,7 +2,19 @@
   {
     "propId": 36672967439,
     "propName": "颜色",
-    "categoryId": 1715
+    "categoryId": 1715,
+    "propValues": [
+      {
+        "propId":36672967439,
+        "propValueId":55935620339,
+        "propValueName":"黑色"
+      },
+      {
+        "propId":36672967439,
+        "propValueId":55935620439,
+        "propValueName":"红色"
+      }
+    ]
   },
   {
     "propId": 36673175139,

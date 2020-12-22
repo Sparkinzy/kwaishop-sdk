@@ -7,7 +7,7 @@ $result = json_decode($result, true);
 ob_end_clean();
 
 $tree = make_tree($result['data'], 0);
-die(json_encode($tree));
+die(json_encode($tree,JSON_UNESCAPED_UNICODE));
 function make_tree($arr, $pid = 0, $column_name = 'categoryId|categoryPid|children|categoryName', $new_column_name = "value|pid|children|label")
 {
     list($idname, $pidname, $cldname, $label_name) = explode('|', $column_name);

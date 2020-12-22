@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择分类</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/jquery-1.10.1.min.js"></script>
+
+</head>
+<body>
+<div class="contains">
+    <!--面包屑导航-->
+    <div class="crumbNav">
+        <a href="demo.html">首页</a>
+        <font>&gt;</font>
+        发布商品
+        <font>&gt;</font>
+        选择商品所在分类
+    </div>
+    <!--商品分类-->
+    <div class="wareSort select-category clearfix"></div>
+    <div class="selectedSort"><b>您当前选择的商品类别是：</b><i id="selectedSort"></i></div>
+    <div class="wareSortBtn">
+        <input id="releaseBtn" type="button" value="下一步" disabled="disabled" />
+    </div>
+
+    <script src="js/jquery.category.js"></script>
+    <script type="text/javascript">
+        (function(){
+            var data = [{
+                "value": 1001,
+                "label": "服饰\/鞋靴\/箱包",
+                "children": [{
+                    "value": 1010,
+                    "label": "箱包",
+                    "children": [{"value": 1012, "label": "功能箱包\/双肩包"}, {"value": 1370, "label": "男包"}, {
+                        "value": 1371,
+                        "label": "女包"
+                    }]
+                }, {
+                    "value": 1362,
+                    "label": "内衣\/家居服\/袜子",
+                    "children": [{"value": 1363, "label": "袜子"}, {"value": 1691, "label": "内衣"}, {
+                        "value": 1692,
+                        "label": "家居服"
+                    }]
+                }, {
+                    "value": 1364,
+                    "label": "配饰",
+                    "children": [{"value": 1365, "label": "棉\/布\/针织配件"}, {"value": 1366, "label": "时尚饰品"}]
+                }, {
+                    "value": 1524,
+                    "label": "男装",
+                    "children": [{"value": 1525, "label": "休闲裤"}, {"value": 1526, "label": "T恤"}, {
+                        "value": 1527,
+                        "label": "针织衫\/毛衣"
+                    }, {"value": 1528, "label": "夹克"}, {"value": 1529, "label": "卫衣"}, {
+                        "value": 1531,
+                        "label": "牛仔裤"
+                    }, {"value": 1534, "label": "Polo衫"}, {"value": 1535, "label": "衬衫"}, {
+                        "value": 1537,
+                        "label": "西服"
+                    }, {"value": 1539, "label": "西裤"}, {"value": 1541, "label": "皮裤"}, {
+                        "value": 1544,
+                        "label": "背心\/马甲"
+                    }, {"value": 1545, "label": "风衣"}, {"value": 1548, "label": "皮衣"}, {
+                        "value": 1552,
+                        "label": "棉衣"
+                    }, {"value": 1554, "label": "羽绒服"}, {"value": 1555, "label": "毛呢大衣"}, {
+                        "value": 1557,
+                        "label": "羽绒裤"
+                    }, {"value": 1559, "label": "棉裤"}, {"value": 1562, "label": "短裤"}, {
+                        "value": 1565,
+                        "label": "工装"
+                    }, {"value": 1567, "label": "汉服\/唐装"}, {"value": 1569, "label": "其它男装"}]
+                }, {
+                    "value": 1582,
+                    "label": "女装",
+                    "children": [{"value": 1584, "label": "连衣裙"}, {"value": 1588, "label": "T恤"}, {
+                        "value": 1591,
+                        "label": "休闲裤"
+                    }, {"value": 1593, "label": "西装裤\/正装裤"}, {"value": 1596, "label": "打底裤"}, {
+                        "value": 1598,
+                        "label": "棉裤\/羽绒裤"
+                    }, {"value": 1599, "label": "皮裤"}, {"value": 1601, "label": "中老年女装"}, {
+                        "value": 1604,
+                        "label": "衬衫"
+                    }, {"value": 1606, "label": "牛仔裤"}, {"value": 1609, "label": "半身裙"}, {
+                        "value": 1611,
+                        "label": "毛针织衫"
+                    }, {"value": 1612, "label": "大码女装"}, {"value": 1613, "label": "短外套"}, {
+                        "value": 1615,
+                        "label": "背心\/吊带"
+                    }, {"value": 1617, "label": "西装"}, {"value": 1620, "label": "风衣"}, {
+                        "value": 1622,
+                        "label": "羽绒服"
+                    }, {"value": 1624, "label": "毛呢外套"}, {"value": 1626, "label": "皮衣\/皮草"}, {
+                        "value": 1627,
+                        "label": "卫衣\/绒衫"
+                    }, {"value": 1628, "label": "毛衣"}, {"value": 1629, "label": "棉衣\/棉服"}, {
+                        "value": 1630,
+                        "label": "马夹"
+                    }, {"value": 1631, "label": "抹胸\/美背"}, {"value": 1632, "label": "旗袍\/汉服"}, {
+                        "value": 1633,
+                        "label": "礼服\/晚装"
+                    }, {"value": 1634, "label": "婚纱"}, {"value": 1635, "label": "其它女装"}]
+                }, {
+                    "value": 1636,
+                    "label": "儿童鞋服",
+                    "children": [{"value": 1638, "label": "儿童休闲裤"}, {"value": 1641, "label": "儿童连衣裙"}, {
+                        "value": 1643,
+                        "label": "儿童T恤"
+                    }, {"value": 1645, "label": "儿童休闲上衣"}, {"value": 1647, "label": "儿童毛衣"}, {
+                        "value": 1648,
+                        "label": "儿童羽绒服"
+                    }, {"value": 1650, "label": "儿童内衣裤"}, {"value": 1652, "label": "儿童家居服"}, {
+                        "value": 1654,
+                        "label": "儿童户外服"
+                    }, {"value": 1656, "label": "儿童牛仔"}, {"value": 1658, "label": "儿童凉鞋"}, {
+                        "value": 1659,
+                        "label": "儿童运动鞋"
+                    }, {"value": 1660, "label": "儿童皮鞋"}, {"value": 1661, "label": "其它儿童鞋服"}]
+                }, {
+                    "value": 1668,
+                    "label": "儿童背包",
+                    "children": [{"value": 1670, "label": "男童背包"}, {"value": 1672, "label": "女童背包"}, {
+                        "value": 1674,
+                        "label": "其它背包"
+                    }]
+                }, {
+                    "value": 1677,
+                    "label": "儿童配件",
+                    "children": [{"value": 1679, "label": "手套"}, {"value": 1682, "label": "帽子"}, {
+                        "value": 1683,
+                        "label": "围巾"
+                    }, {"value": 1686, "label": "耳套\/耳暖"}, {"value": 1688, "label": "腰带"}, {"value": 1690, "label": "其它配饰"}]
+                }, {
+                    "value": 1693,
+                    "label": "男鞋",
+                    "children": [{"value": 1695, "label": "休闲鞋"}, {"value": 1698, "label": "帆布鞋"}, {
+                        "value": 1700,
+                        "label": "皮鞋"
+                    }, {"value": 1702, "label": "板鞋"}, {"value": 1704, "label": "凉鞋\/沙滩鞋"}, {
+                        "value": 1706,
+                        "label": "拖鞋\/人字拖"
+                    }, {"value": 1708, "label": "男靴"}, {"value": 1709, "label": "雨鞋\/雨靴"}, {
+                        "value": 1710,
+                        "label": "传统布鞋"
+                    }, {"value": 1711, "label": "增高鞋"}, {"value": 1712, "label": "其它鞋靴"}]
+                }, {
+                    "value": 1713,
+                    "label": "女鞋",
+                    "children": [{"value": 1714, "label": "高跟鞋"}, {"value": 1715, "label": "单鞋"}, {
+                        "value": 1716,
+                        "label": "休闲鞋"
+                    }, {"value": 1717, "label": "帆布鞋"}, {"value": 1719, "label": "皮鞋"}, {
+                        "value": 1720,
+                        "label": "凉鞋\/沙滩鞋"
+                    }, {"value": 1722, "label": "拖鞋\/人字拖"}, {"value": 1724, "label": "女靴"}, {
+                        "value": 1726,
+                        "label": "雪地靴"
+                    }, {"value": 1728, "label": "雨鞋\/雨靴"}, {"value": 1729, "label": "鱼嘴鞋"}, {
+                        "value": 1730,
+                        "label": "布鞋\/绣花鞋"
+                    }, {"value": 1732, "label": "马丁靴"}, {"value": 1734, "label": "坡跟鞋"}, {
+                        "value": 1736,
+                        "label": "增高鞋"
+                    }, {"value": 1737, "label": "其它鞋靴"}]
+                }]
+            }, {
+                "value": 1013,
+                "label": "珠宝\/钟表",
+                "children": [{
+                    "value": 1014,
+                    "label": "金银饰",
+                    "children": [{"value": 1309, "label": "黄金(足金\/纯金)"}, {"value": 1310, "label": "铂金"}, {
+                        "value": 1311,
+                        "label": "K金"
+                    }, {"value": 1312, "label": "银饰"}]
+                }, {
+                    "value": 1019,
+                    "label": "钟表",
+                    "children": [{"value": 1020, "label": "时尚手表"}, {"value": 1021, "label": "功能钟表"}]
+                }, {
+                    "value": 1307,
+                    "label": "玉石",
+                    "children": [{"value": 1313, "label": "翡翠原石"}, {"value": 1314, "label": "翡翠成品"}, {
+                        "value": 1315,
+                        "label": "和田玉"
+                    }, {"value": 1316, "label": "玛瑙"}, {"value": 1317, "label": "其他玉石"}]
+                }, {
+                    "value": 1308,
+                    "label": "宝石",
+                    "children": [{"value": 1318, "label": "彩色宝石"}, {"value": 1319, "label": "珍珠"}, {
+                        "value": 1320,
+                        "label": "人造\/合成宝石"
+                    }]
+                }]
+            }, {
+                "value": 1022,
+                "label": "运动户外",
+                "children": [{
+                    "value": 1026,
+                    "label": "运动用品",
+                    "children": [{"value": 1027, "label": "健身训练"}, {"value": 1028, "label": "体育用品"}]
+                }, {
+                    "value": 1029,
+                    "label": "户外用具",
+                    "children": [{"value": 1030, "label": "户外装备"}, {"value": 1032, "label": "垂钓用品"}, {
+                        "value": 1033,
+                        "label": "游泳用品"
+                    }]
+                }, {
+                    "value": 1472,
+                    "label": "自行车\/电动车",
+                    "children": [{"value": 1473, "label": "电动自行车"}, {"value": 1474, "label": "平衡车\/滑板车"}, {
+                        "value": 1475,
+                        "label": "摩托车"
+                    }, {"value": 1476, "label": "老年代步车"}, {"value": 1477, "label": "自行车"}, {
+                        "value": 1478,
+                        "label": "自行车配件"
+                    }, {"value": 1479, "label": "其它配件"}]
+                }, {
+                    "value": 1785,
+                    "label": "运动鞋服",
+                    "children": [{"value": 1789, "label": "篮球鞋"}, {"value": 1791, "label": "跑步鞋"}, {
+                        "value": 1793,
+                        "label": "运动板鞋"
+                    }, {"value": 1796, "label": "羽毛球鞋"}, {"value": 1797, "label": "网球鞋"}, {
+                        "value": 1798,
+                        "label": "足球鞋"
+                    }, {"value": 1799, "label": "乒乓球鞋"}, {"value": 1801, "label": "综合训练鞋\/室内健身鞋"}, {
+                        "value": 1803,
+                        "label": "健步鞋"
+                    }, {"value": 1806, "label": "其它运动鞋"}, {"value": 1807, "label": "运动卫衣\/套头衫"}, {
+                        "value": 1808,
+                        "label": "运动风衣"
+                    }, {"value": 1809, "label": "运动棉衣"}, {"value": 1810, "label": "运动羽绒服"}, {
+                        "value": 1811,
+                        "label": "运动夹克\/外套"
+                    }, {"value": 1812, "label": "运动T恤"}, {"value": 1813, "label": "运动套装"}, {
+                        "value": 1814,
+                        "label": "运动POLO衫"
+                    }, {"value": 1815, "label": "健身服装"}, {"value": 1817, "label": "运动裤"}, {
+                        "value": 1818,
+                        "label": "运动裙"
+                    }, {"value": 1819, "label": "运动马甲"}, {"value": 1821, "label": "运动球服"}, {
+                        "value": 1824,
+                        "label": "运动内衣"
+                    }, {"value": 1828, "label": "运动配饰"}]
+                }, {
+                    "value": 1836,
+                    "label": "户外鞋服",
+                    "children": [{"value": 1837, "label": "户外服装"}, {"value": 1839, "label": "户外鞋靴"}]
+                }]
+            }, {
+                "value": 1034,
+                "label": "孕婴\/乐器\/玩具",
+                "children": [{
+                    "value": 1035,
+                    "label": "寝居用品",
+                    "children": [{"value": 1036, "label": "孕产寝居"}, {"value": 1037, "label": "婴童寝居"}]
+                }, {
+                    "value": 1038,
+                    "label": "婴童用品",
+                    "children": [{"value": 1039, "label": "喂养用品"}, {"value": 1040, "label": "婴幼洗护"}]
+                }, {
+                    "value": 1041,
+                    "label": "奶粉\/辅食",
+                    "children": [{"value": 1042, "label": "奶粉"}, {"value": 1043, "label": "辅食"}]
+                }, {
+                    "value": 1044,
+                    "label": "童车\/手推车\/童床\/安全座椅",
+                    "children": [{"value": 1045, "label": "童车\/手推车"}, {"value": 1046, "label": "童床"}, {
+                        "value": 1047,
+                        "label": "安全座椅"
+                    }]
+                }, {
+                    "value": 1048,
+                    "label": "尿裤湿巾",
+                    "children": [{"value": 1049, "label": "尿裤湿巾"}, {"value": 1050, "label": "成人尿裤"}]
+                }, {
+                    "value": 1051,
+                    "label": "乐器",
+                    "children": [{"value": 1348, "label": "西洋乐器"}, {"value": 1349, "label": "中式乐器"}]
+                }, {
+                    "value": 1053,
+                    "label": "玩具",
+                    "children": [{"value": 1350, "label": "益智\/毛绒\/布艺类玩具"}, {"value": 1351, "label": "模玩手办"}]
+                }]
+            }, {
+                "value": 1055, "label": "美妆\/个护清洁", "children": [{
+                    "value": 1056,
+                    "label": "美妆",
+                    "children": [{
+                        "value": 1481,
+                        "label": "彩妆",
+                        "children": [{"value": 1482, "label": "口红"}, {"value": 1483, "label": "唇彩\/唇蜜\/唇釉"}, {
+                            "value": 1484,
+                            "label": "气垫BB\/CC"
+                        }, {"value": 1485, "label": "BB霜\/CC霜"}, {"value": 1486, "label": "粉饼"}, {
+                            "value": 1487,
+                            "label": "蜜粉\/散粉"
+                        }, {"value": 1488, "label": "粉底液\/膏\/霜"}, {"value": 1489, "label": "遮瑕膏\/笔"}, {
+                            "value": 1490,
+                            "label": "隔离霜"
+                        }, {"value": 1491, "label": "妆前乳"}, {"value": 1492, "label": "修容\/高光\/阴影粉"}, {
+                            "value": 1493,
+                            "label": "眼线笔\/液\/膏"
+                        }, {"value": 1494, "label": "眉笔\/眉粉"}, {"value": 1495, "label": "睫毛膏\/睫毛增长液"}, {
+                            "value": 1496,
+                            "label": "眼影"
+                        }, {"value": 1497, "label": "腮红\/胭脂"}, {"value": 1498, "label": "唇笔"}, {
+                            "value": 1499,
+                            "label": "彩妆套装"
+                        }, {"value": 1500, "label": "其它彩妆"}]
+                    }, {
+                        "value": 1501,
+                        "label": "美妆工具",
+                        "children": [{"value": 1502, "label": "粉扑\/洗脸扑"}, {"value": 1503, "label": "化妆棉"}, {
+                            "value": 1504,
+                            "label": "洁面巾"
+                        }, {"value": 1505, "label": "假睫毛"}, {"value": 1506, "label": "修眉工具"}, {
+                            "value": 1507,
+                            "label": "美睫工具"
+                        }, {"value": 1508, "label": "美甲工具"}, {"value": 1509, "label": "化妆刷"}, {
+                            "value": 1510,
+                            "label": "指甲油\/甲片\/甲胶"
+                        }, {"value": 1511, "label": "双眼皮贴\/胶"}, {"value": 1512, "label": "剃毛刀"}, {
+                            "value": 1513,
+                            "label": "美妆工具套装"
+                        }, {"value": 1514, "label": "其它美妆工具"}]
+                    }, {
+                        "value": 1516,
+                        "label": "香水",
+                        "children": [{"value": 1517, "label": "女士香水"}, {"value": 1518, "label": "男士香水"}, {
+                            "value": 1519,
+                            "label": "香体走珠"
+                        }, {"value": 1520, "label": "组合套装"}]
+                    }]
+                }, {
+                    "value": 1060,
+                    "label": "个护清洁",
+                    "children": [{
+                        "value": 1521,
+                        "label": "面部护肤",
+                        "children": [{"value": 1522, "label": "洁面"}, {"value": 1523, "label": "面膜"}, {
+                            "value": 1530,
+                            "label": "爽肤水\/化妆水"
+                        }, {"value": 1532, "label": "乳液"}, {"value": 1533, "label": "面霜"}, {
+                            "value": 1536,
+                            "label": "面部精华"
+                        }, {"value": 1538, "label": "眼霜\/眼部精华"}, {"value": 1540, "label": "喷雾"}, {
+                            "value": 1542,
+                            "label": "滋润唇膏"
+                        }, {"value": 1543, "label": "眼膜"}, {"value": 1546, "label": "防晒"}, {
+                            "value": 1547,
+                            "label": "卸妆"
+                        }, {"value": 1549, "label": "T区护理"}, {"value": 1550, "label": "唇部护理"}, {
+                            "value": 1551,
+                            "label": "套装\/礼盒"
+                        }, {"value": 1553, "label": "其它面部护肤"}]
+                    }, {
+                        "value": 1556,
+                        "label": "男士面部护肤",
+                        "children": [{"value": 1558, "label": "男士洁面"}, {"value": 1560, "label": "男士爽肤水\/化妆水"}, {
+                            "value": 1561,
+                            "label": "男士乳液\/面霜"
+                        }, {"value": 1563, "label": "男士面部精华"}, {"value": 1564, "label": "男士润唇膏"}, {
+                            "value": 1566,
+                            "label": "男士面膜"
+                        }, {"value": 1568, "label": "男士T区护理"}, {"value": 1570, "label": "男士防晒"}, {
+                            "value": 1571,
+                            "label": "剃须"
+                        }, {"value": 1572, "label": "男士卸妆"}, {"value": 1573, "label": "男士眼霜\/眼部精华"}, {
+                            "value": 1574,
+                            "label": "套装\/礼盒"
+                        }, {"value": 1575, "label": "其它男士面部护肤"}]
+                    }, {
+                        "value": 1581,
+                        "label": "美发\/造型",
+                        "children": [{"value": 1583, "label": "染发"}, {"value": 1585, "label": "发胶\/蜡\/泥"}, {
+                            "value": 1586,
+                            "label": "弹力素"
+                        }, {"value": 1587, "label": "摩丝"}, {"value": 1589, "label": "蓬蓬粉"}, {
+                            "value": 1590,
+                            "label": "啫喱膏\/水"
+                        }, {"value": 1592, "label": "假发"}, {"value": 1594, "label": "美发工具"}, {
+                            "value": 1595,
+                            "label": "烫发产品"
+                        }, {"value": 1597, "label": "其它美发\/造型"}]
+                    }, {
+                        "value": 1600,
+                        "label": "洗发护发",
+                        "children": [{"value": 1602, "label": "洗发水"}, {"value": 1603, "label": "护发素"}, {
+                            "value": 1605,
+                            "label": "发膜"
+                        }, {"value": 1607, "label": "精油"}, {"value": 1608, "label": "洗护套装"}, {
+                            "value": 1610,
+                            "label": "其它洗发护发产品"
+                        }]
+                    }, {
+                        "value": 1614,
+                        "label": "女性护理",
+                        "children": [{"value": 1616, "label": "卫生巾"}, {"value": 1618, "label": "卫生棉条"}, {
+                            "value": 1619,
+                            "label": "卫生护垫"
+                        }, {"value": 1621, "label": "私密护理"}, {"value": 1623, "label": "女性护理套装"}, {
+                            "value": 1625,
+                            "label": "其它女性护理"
+                        }]
+                    }, {
+                        "value": 1637,
+                        "label": "口腔护理",
+                        "children": [{"value": 1639, "label": "牙膏"}, {"value": 1640, "label": "牙刷"}, {
+                            "value": 1642,
+                            "label": "漱口水"
+                        }, {"value": 1644, "label": "牙粉"}, {"value": 1646, "label": "牙贴"}, {
+                            "value": 1649,
+                            "label": "牙线\/牙线棒"
+                        }, {"value": 1651, "label": "假牙清洁"}, {"value": 1653, "label": "口喷"}, {
+                            "value": 1655,
+                            "label": "口腔护理套装"
+                        }, {"value": 1657, "label": "其它口腔护理"}]
+                    }, {
+                        "value": 1662,
+                        "label": "身体护理",
+                        "children": [{"value": 1663, "label": "洗手液"}, {"value": 1664, "label": "沐浴露"}, {
+                            "value": 1665,
+                            "label": "皂类"
+                        }, {"value": 1666, "label": "浴盐"}, {"value": 1667, "label": "手部护理"}, {
+                            "value": 1669,
+                            "label": "身体乳\/油"
+                        }, {"value": 1671, "label": "脱毛"}, {"value": 1673, "label": "纤体塑形"}, {
+                            "value": 1675,
+                            "label": "胸部护理"
+                        }, {"value": 1676, "label": "足部护理"}, {"value": 1678, "label": "颈部护理"}, {
+                            "value": 1680,
+                            "label": "走珠\/止汗露"
+                        }, {"value": 1681, "label": "按摩膏\/磨砂膏"}, {"value": 1684, "label": "祛痱止痒"}, {
+                            "value": 1685,
+                            "label": "精油"
+                        }, {"value": 1687, "label": "身体护理套装"}, {"value": 1689, "label": "其它身体护理"}]
+                    }, {
+                        "value": 1694,
+                        "label": "个护仪器",
+                        "children": [{"value": 1696, "label": "清洁仪"}, {"value": 1697, "label": "导入\/导出仪"}, {
+                            "value": 1699,
+                            "label": "喷雾补水仪"
+                        }, {"value": 1701, "label": "吹风机"}, {"value": 1703, "label": "电动剃须刀"}, {
+                            "value": 1705,
+                            "label": "电动牙刷"
+                        }, {"value": 1707, "label": "剃\/脱毛器"}, {"value": 1718, "label": "美容器"}, {
+                            "value": 1721,
+                            "label": "洁面仪"
+                        }, {"value": 1723, "label": "卷\/直发器"}, {"value": 1725, "label": "理发器"}, {
+                            "value": 1727,
+                            "label": "其它个护仪器"
+                        }]
+                    }]
+                }]
+            }, {
+                "value": 1065,
+                "label": "手机\/数码\/电脑办公",
+                "children": [{
+                    "value": 1066,
+                    "label": "手机\/配件",
+                    "children": [{"value": 1067, "label": "手机"}, {"value": 1068, "label": "手机配件"}]
+                }, {
+                    "value": 1069,
+                    "label": "数码",
+                    "children": [{"value": 1070, "label": "摄影摄像"}, {"value": 1071, "label": "数码配件"}, {
+                        "value": 1072,
+                        "label": "影音娱乐"
+                    }, {"value": 1073, "label": "智能设备"}, {"value": 1074, "label": "电子教育"}]
+                }, {
+                    "value": 1075,
+                    "label": "电脑\/外设",
+                    "children": [{"value": 1076, "label": "电脑整机"}, {"value": 1077, "label": "电脑配件"}, {
+                        "value": 1078,
+                        "label": "外设产品"
+                    }, {"value": 1079, "label": "游戏设备"}, {"value": 1080, "label": "网络产品"}]
+                }, {
+                    "value": 1081,
+                    "label": "办公设备",
+                    "children": [{"value": 1082, "label": "办公设备"}, {"value": 1083, "label": "耗材"}, {
+                        "value": 1480,
+                        "label": "办公设备配件"
+                    }]
+                }]
+            }, {
+                "value": 1084,
+                "label": "家用电器",
+                "children": [{
+                    "value": 1085,
+                    "label": "大家电",
+                    "children": [{"value": 1086, "label": "电视机"}, {"value": 1087, "label": "冰箱"}, {
+                        "value": 1088,
+                        "label": "洗衣机"
+                    }, {"value": 1089, "label": "空调"}]
+                }, {
+                    "value": 1090,
+                    "label": "厨卫电器",
+                    "children": [{"value": 1091, "label": "厨卫大电"}, {"value": 1092, "label": "热水器"}, {
+                        "value": 1093,
+                        "label": "净水饮水"
+                    }, {"value": 1356, "label": "厨房小电"}]
+                }, {
+                    "value": 1098,
+                    "label": "生活电器",
+                    "children": [{"value": 1099, "label": "取暖电器"}, {"value": 1100, "label": "净化吸尘"}, {
+                        "value": 1101,
+                        "label": "风扇"
+                    }, {"value": 1102, "label": "潮流生活小家电"}]
+                }, {"value": 1103, "label": "个人健康", "children": [{"value": 1106, "label": "健康保健"}]}]
+            }, {
+                "value": 1107,
+                "label": "家居生活",
+                "children": [{
+                    "value": 1108,
+                    "label": "家具",
+                    "children": [{"value": 1109, "label": "家庭家具"}, {"value": 1110, "label": "儿童家具"}, {
+                        "value": 1111,
+                        "label": "办公家具"
+                    }, {"value": 1112, "label": "定制家具"}, {"value": 1374, "label": "红木家具"}]
+                }, {
+                    "value": 1113,
+                    "label": "家装建材",
+                    "children": [{"value": 1114, "label": "厨房卫浴"}, {"value": 1115, "label": "灯饰照明"}, {
+                        "value": 1116,
+                        "label": "装修主材"
+                    }, {"value": 1324, "label": "五金配件"}, {"value": 1373, "label": "装修工具"}]
+                }, {
+                    "value": 1117,
+                    "label": "家纺",
+                    "children": [{"value": 1118, "label": "床上用品"}, {"value": 1119, "label": "凉席蚊帐"}, {
+                        "value": 1120,
+                        "label": "毛巾浴巾"
+                    }, {"value": 1121, "label": "床垫"}, {"value": 1122, "label": "地毯地垫"}, {"value": 1123, "label": "窗帘桌布"}]
+                }, {
+                    "value": 1124,
+                    "label": "居家日用",
+                    "children": [{"value": 1125, "label": "生活日用"}, {"value": 1126, "label": "文化用具"}, {
+                        "value": 1127,
+                        "label": "家装软饰"
+                    }, {"value": 1128, "label": "收纳用品"}, {"value": 1129, "label": "净化除味"}, {"value": 1133, "label": "殡葬用品"}]
+                }, {
+                    "value": 1134,
+                    "label": "厨具\/杯具",
+                    "children": [{"value": 1135, "label": "烹饪用具"}, {"value": 1136, "label": "水具酒具"}, {
+                        "value": 1137,
+                        "label": "茶艺\/茶具"
+                    }, {"value": 1138, "label": "餐具"}, {"value": 1139, "label": "刀剪菜板"}, {
+                        "value": 1140,
+                        "label": "酒店用品"
+                    }, {"value": 1141, "label": "厨房配件"}]
+                }, {
+                    "value": 1354,
+                    "label": "居家清洁",
+                    "children": [{"value": 1130, "label": "衣物清洁"}, {"value": 1132, "label": "清洁工具"}, {
+                        "value": 1355,
+                        "label": "纸品湿巾"
+                    }, {"value": 1375, "label": "厨卫清洁"}, {"value": 1376, "label": "其它清洁"}]
+                }]
+            }, {
+                "value": 1148,
+                "label": "鲜花绿植\/农资",
+                "children": [{
+                    "value": 1149,
+                    "label": "鲜花绿植",
+                    "children": [{"value": 1150, "label": "鲜花"}, {"value": 1151, "label": "花卉绿植"}, {
+                        "value": 1152,
+                        "label": "园艺工具"
+                    }, {"value": 1153, "label": "树苗\/绿化植物"}]
+                }, {
+                    "value": 1154,
+                    "label": "农用物资",
+                    "children": [{"value": 1155, "label": "种子"}, {"value": 1156, "label": "农药"}, {
+                        "value": 1157,
+                        "label": "肥料"
+                    }, {"value": 1158, "label": "农机农具"}]
+                }, {
+                    "value": 1159,
+                    "label": "畜牧养殖",
+                    "children": [{"value": 1160, "label": "兽药"}, {"value": 1161, "label": "养殖器具"}, {
+                        "value": 1162,
+                        "label": "动物种苗"
+                    }]
+                }]
+            }, {
+                "value": 1163,
+                "label": "食品",
+                "children": [{
+                    "value": 1164,
+                    "label": "休闲食品",
+                    "children": [{"value": 1165, "label": "其它零食"}, {"value": 1166, "label": "坚果炒货"}, {
+                        "value": 1167,
+                        "label": "肉干肉脯"
+                    }, {"value": 1168, "label": "糖果\/巧克力"}, {"value": 1169, "label": "饼干蛋糕"}, {
+                        "value": 1170,
+                        "label": "蜜饯果干"
+                    }, {"value": 1731, "label": "熟食腊味"}, {"value": 1733, "label": "月饼"}, {"value": 1735, "label": "粽子"}]
+                }, {
+                    "value": 1171,
+                    "label": "粮油调味",
+                    "children": [{"value": 1172, "label": "米面杂粮"}, {"value": 1173, "label": "食用油"}, {
+                        "value": 1174,
+                        "label": "调味品"
+                    }]
+                }, {
+                    "value": 1181,
+                    "label": "酒类",
+                    "children": [{"value": 1182, "label": "白酒"}, {"value": 1183, "label": "葡萄酒"}, {
+                        "value": 1184,
+                        "label": "啤酒"
+                    }, {"value": 1185, "label": "黄酒"}, {"value": 1186, "label": "洋酒"}, {"value": 1347, "label": "其他酒类"}]
+                }, {
+                    "value": 1187,
+                    "label": "生鲜",
+                    "children": [{"value": 1191, "label": "蛋产品"}, {"value": 1192, "label": "肉制品"}, {
+                        "value": 1829,
+                        "label": "低温乳品"
+                    }, {"value": 1830, "label": "速食冻品"}, {"value": 1831, "label": "冷饮冰品"}, {
+                        "value": 1832,
+                        "label": "蔬菜"
+                    }, {"value": 1833, "label": "水果"}, {"value": 1834, "label": "蟹类"}, {
+                        "value": 1835,
+                        "label": "鱼类"
+                    }, {"value": 1838, "label": "贝类"}, {"value": 1840, "label": "虾类"}, {
+                        "value": 1841,
+                        "label": "海参"
+                    }, {"value": 1842, "label": "海产礼盒"}, {"value": 1843, "label": "其它水产品"}, {"value": 1844, "label": "半成品"}]
+                }, {
+                    "value": 1346,
+                    "label": "速食\/干货",
+                    "children": [{"value": 1175, "label": "南北干货"}, {"value": 1176, "label": "方便食品"}]
+                }, {
+                    "value": 1786,
+                    "label": "茗茶",
+                    "children": [{"value": 1787, "label": "红茶"}, {"value": 1788, "label": "绿茶"}, {
+                        "value": 1790,
+                        "label": "铁观音"
+                    }, {"value": 1792, "label": "普洱"}, {"value": 1794, "label": "黑茶"}, {
+                        "value": 1795,
+                        "label": "白茶"
+                    }, {"value": 1802, "label": "花茶\/果茶"}, {"value": 1804, "label": "养生茶"}, {
+                        "value": 1805,
+                        "label": "乌龙茶"
+                    }, {"value": 1816, "label": "其它茶"}]
+                }, {
+                    "value": 1820,
+                    "label": "饮料冲调",
+                    "children": [{"value": 1822, "label": "冲饮谷物"}, {"value": 1823, "label": "饮料"}, {
+                        "value": 1825,
+                        "label": "饮用水"
+                    }, {"value": 1826, "label": "牛奶乳品"}, {"value": 1827, "label": "成人奶粉"}]
+                }, {
+                    "value": 1845,
+                    "label": "营养保健",
+                    "children": [{"value": 1846, "label": "保健食品"}, {"value": 1847, "label": "营养健康"}, {
+                        "value": 1848,
+                        "label": "传统滋补"
+                    }]
+                }]
+            }, {
+                "value": 1193,
+                "label": "汽车用品",
+                "children": [{
+                    "value": 1194,
+                    "label": "汽车用品",
+                    "children": [{"value": 1195, "label": "维修保养"}, {"value": 1196, "label": "汽车装饰"}, {
+                        "value": 1197,
+                        "label": "车载电器"
+                    }, {"value": 1198, "label": "美容清洗"}, {"value": 1199, "label": "安全自驾"}]
+                }]
+            }, {
+                "value": 1206,
+                "label": "房产\/汽车",
+                "children": [{
+                    "value": 1207,
+                    "label": "房产",
+                    "children": [{"value": 1208, "label": "住宅用途房产"}, {"value": 1209, "label": "商业房产"}]
+                }, {
+                    "value": 1210,
+                    "label": "汽车",
+                    "children": [{"value": 1211, "label": "家庭用车"}, {"value": 1212, "label": "工业用车"}, {
+                        "value": 1213,
+                        "label": "特种车辆"
+                    }]
+                }]
+            }, {
+                "value": 1214,
+                "label": "医用保健",
+                "children": [{
+                    "value": 1215,
+                    "label": "医疗药品",
+                    "children": [{"value": 1216, "label": "中药材"}, {"value": 1217, "label": "西药制剂"}, {
+                        "value": 1218,
+                        "label": "医用器械"
+                    }]
+                }, {
+                    "value": 1219,
+                    "label": "健康保健",
+                    "children": [{"value": 1220, "label": "营养保健"}, {"value": 1221, "label": "营养成分"}, {
+                        "value": 1222,
+                        "label": "滋补养生"
+                    }, {"value": 1223, "label": "计生情趣"}, {"value": 1224, "label": "保健器械"}, {
+                        "value": 1225,
+                        "label": "护理护具"
+                    }, {"value": 1226, "label": "功能眼镜\/隐形眼镜"}]
+                }]
+            }, {
+                "value": 1227,
+                "label": "图书文娱",
+                "children": [{
+                    "value": 1228,
+                    "label": "图书\/期刊",
+                    "children": [{"value": 1229, "label": "图书"}, {"value": 1230, "label": "杂志报刊"}]
+                }, {
+                    "value": 1231,
+                    "label": "文娱",
+                    "children": [{"value": 1232, "label": "音乐"}, {"value": 1233, "label": "影视"}, {
+                        "value": 1234,
+                        "label": "教育音像"
+                    }, {"value": 1235, "label": "游戏"}, {"value": 1236, "label": "影视\/动漫周边"}]
+                }, {"value": 1237, "label": "电子书", "children": [{"value": 1238, "label": "电子书"}]}]
+            }, {
+                "value": 1244,
+                "label": "工业品",
+                "children": [{
+                    "value": 1245,
+                    "label": "工具\/劳动防护",
+                    "children": [{"value": 1246, "label": "工具"}, {"value": 1247, "label": "个人防护"}, {
+                        "value": 1248,
+                        "label": "安防用品"
+                    }, {"value": 1249, "label": "标识"}]
+                }, {
+                    "value": 1250,
+                    "label": "工业材料",
+                    "children": [{"value": 1251, "label": "建筑材料"}, {"value": 1252, "label": "工业原材料"}]
+                }, {
+                    "value": 1253,
+                    "label": "工控仪表",
+                    "children": [{"value": 1254, "label": "线缆"}, {"value": 1255, "label": "工控配电"}, {
+                        "value": 1256,
+                        "label": "仪器仪表"
+                    }]
+                }, {
+                    "value": 1257,
+                    "label": "照明焊接",
+                    "children": [{"value": 1258, "label": "工业照明"}, {"value": 1259, "label": "流体相关"}, {
+                        "value": 1260,
+                        "label": "焊接用品"
+                    }]
+                }, {
+                    "value": 1261,
+                    "label": "工业机械",
+                    "children": [{"value": 1262, "label": "机械设备"}, {"value": 1263, "label": "机械配件"}]
+                }, {
+                    "value": 1264,
+                    "label": "仓储包装",
+                    "children": [{"value": 1265, "label": "包装"}, {"value": 1266, "label": "搬运存储"}]
+                }, {
+                    "value": 1267,
+                    "label": "化学制剂",
+                    "children": [{"value": 1268, "label": "工业清洁用品"}, {"value": 1269, "label": "化学品"}]
+                }]
+            }, {
+                "value": 1270,
+                "label": "虚拟\/服务",
+                "children": [{
+                    "value": 1271,
+                    "label": "虚拟卡\/会员\/游戏",
+                    "children": [{"value": 1272, "label": "电话卡\/上网卡"}, {
+                        "value": 1273,
+                        "label": "在线影视\/音乐\/阅读\/社交软件会员"
+                    }, {"value": 1274, "label": "代金卡\/券"}, {"value": 1275, "label": "游戏点卡\/游戏充值\/QQ充值"}, {
+                        "value": 1276,
+                        "label": "游戏代练"
+                    }]
+                }, {
+                    "value": 1277,
+                    "label": "生活服务",
+                    "children": [{"value": 1278, "label": "安装维修"}, {"value": 1279, "label": "装修设计"}, {
+                        "value": 1280,
+                        "label": "家政保洁"
+                    }, {"value": 1281, "label": "清洗服务"}, {"value": 1282, "label": "健康美容服务"}, {
+                        "value": 1283,
+                        "label": "休闲服务"
+                    }, {"value": 1284, "label": "摄影\/婚庆服务"}, {"value": 1285, "label": "母婴服务"}, {
+                        "value": 1286,
+                        "label": "体育服务"
+                    }, {"value": 1287, "label": "宠物服务"}, {"value": 1288, "label": "便民服务"}, {
+                        "value": 1289,
+                        "label": "汽车服务"
+                    }, {"value": 1290, "label": "演出票务"}, {"value": 1291, "label": "生活缴费"}]
+                }, {
+                    "value": 1292,
+                    "label": "出行服务",
+                    "children": [{"value": 1293, "label": "交通出行"}, {"value": 1294, "label": "酒店预定"}, {
+                        "value": 1295,
+                        "label": "旅游度假\/商旅服务"
+                    }]
+                }, {
+                    "value": 1296,
+                    "label": "培训教育",
+                    "children": [{"value": 1297, "label": "教育培训"}, {"value": 1298, "label": "技能培训"}, {
+                        "value": 1299,
+                        "label": "生活兴趣"
+                    }]
+                }, {
+                    "value": 1300,
+                    "label": "商业服务",
+                    "children": [{"value": 1301, "label": "招聘服务"}, {"value": 1302, "label": "商务服务"}, {
+                        "value": 1303,
+                        "label": "保险服务"
+                    }]
+                }, {"value": 1853, "label": "运营商业务", "children": [{"value": 1854, "label": "话费"}]}]
+            }, {
+                "value": 1321,
+                "label": "二手",
+                "children": [{
+                    "value": 1323,
+                    "label": "二手奢侈品",
+                    "children": [{"value": 1326, "label": "二手奢侈钟表"}, {"value": 1327, "label": "二手奢侈箱包"}, {
+                        "value": 1328,
+                        "label": "二手奢侈服饰"
+                    }, {"value": 1329, "label": "二手奢侈鞋靴"}, {"value": 1330, "label": "二手奢侈珠宝首饰"}]
+                }]
+            }, {
+                "value": 1377,
+                "label": "宠物生活",
+                "children": [{
+                    "value": 1379,
+                    "label": "宠物用品",
+                    "children": [{"value": 1385, "label": "宠物主粮"}, {"value": 1386, "label": "宠物零食\/营养品"}, {
+                        "value": 1388,
+                        "label": "宠物日用及玩具\/出行装备\/洗护美容用具"
+                    }]
+                }]
+            }, {
+                "value": 1390,
+                "label": "趣味玩物",
+                "children": [{
+                    "value": 1391,
+                    "label": "木雕盘玩",
+                    "children": [{"value": 1392, "label": "木艺珠串"}, {"value": 1393, "label": "木质把件"}]
+                }, {"value": 1394, "label": "古玩收藏", "children": [{"value": 1395, "label": "钱币"}]}, {
+                    "value": 1399,
+                    "label": "书画篆刻",
+                    "children": [{"value": 1400, "label": "书法\/绘画"}, {"value": 1401, "label": "文房器具"}, {
+                        "value": 1404,
+                        "label": "篆刻拓片"
+                    }]
+                }, {
+                    "value": 1405,
+                    "label": "手工艺品\/民俗",
+                    "children": [{"value": 1406, "label": "宗教文化"}, {"value": 1408, "label": "雕刻\/漆器工艺\/摆件"}, {
+                        "value": 1409,
+                        "label": "香炉\/烟具"
+                    }, {"value": 1410, "label": "皮革\/刺绣\/印染\/编织\/纸艺"}, {"value": 1411, "label": "其它杂项"}]
+                }]
+            }];
+
+            $('.select-category').category({
+                data:data,
+                initValue:[1390,1399,1404],
+                search:'烟具',
+                onClick:function(values,is_last){
+                    console.log('success:',values,'is_last: ',is_last)
+                    if (is_last){
+                        $('#releaseBtn').removeProp('disabled');
+                    }else{
+                        $('#releaseBtn').prop('disabled','disabled');
+                    }
+                    var title =[];
+                    for (var i=0;i<values.length;i++){
+                        title.push(values[i].label)
+                    }
+                    $('#selectedSort').text(title.join('/'));
+                }
+            });
+
+        })();
+    </script>
+</div>
+
+</body>
+</html>

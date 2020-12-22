@@ -4,6 +4,7 @@ $config   = include __DIR__.'/config.php';
 $kwaishop = new \Sparkinzy\KwaishopSdk\Kwaishop($config);
 // 获取商品类目列表
 $categories = $kwaishop->item->request('open.item.category');
+file_put_contents(__DIR__.'/data/categories.json', json_encode($categories,JSON_UNESCAPED_UNICODE).PHP_EOL);
 die(json_encode($categories));
 // 获取类目相关配置信息
 //$param = ['categoryId'=>1027];
