@@ -1,0 +1,105 @@
+{
+  "result": 1,
+  "error_msg": "",
+  "data": {
+    "propConfigs": [
+      {
+        "preConstraint": false,
+        "prePropValues": [],
+        "propValueMaximum": 0,
+        "propId": 102,
+        "propInputConfig": {
+          "inputFormatConfig": {
+            "patternList": [
+              "\\u4E00-\\u9FA5",
+              "0-9",
+              "a-zA-Z",
+              "、（）(),，.\/\\-"
+            ],
+            "min": 0,
+            "max": 0,
+            "useLimit": false,
+            "message": "只能包括中文、数字、英文、顿号，括号，逗号，中划线，小数点，斜杠"
+          },
+          "dateInputConfig": {
+            "rangeList": [],
+            "type": ""
+          },
+          "imageInputConfig": {
+            "minCount": 1,
+            "maxCount": 1,
+            "minWidth": 0,
+            "minHeight": 0
+          }
+        },
+        "sortNum": 1,
+        "propInputType": "RADIO",
+        "propName": "品牌",
+        "required": false
+      },
+      {
+        "preConstraint": false,
+        "prePropValues": [],
+        "propValueMaximum": 0,
+        "propId": 3766,
+        "propInputConfig": {
+          "inputFormatConfig": {
+            "patternList": [
+              "\\u4E00-\\u9FA5",
+              "0-9",
+              "a-zA-Z",
+              "、（）(),，.\/\\-"
+            ],
+            "min": 0,
+            "max": 0,
+            "useLimit": false,
+            "message": "只能包括中文、数字、英文、顿号，括号，逗号，中划线，小数点，斜杠"
+          },
+          "dateInputConfig": {
+            "rangeList": [],
+            "type": ""
+          }
+        },
+        "sortNum": 1,
+        "propInputType": "RADIO",
+        "propName": "适用季节-服装-1",
+        "required": false
+      },
+      {
+        "preConstraint": false,
+        "prePropValues": [],
+        "propValueMaximum": 3,
+        "propId": 3784,
+        "propInputConfig": {
+          "inputFormatConfig": {
+            "patternList": [
+              "\\u4E00-\\u9FA5",
+              "0-9",
+              "a-zA-Z",
+              "、（）(),，.\/\\-"
+            ],
+            "min": 0,
+            "max": 0,
+            "useLimit": false,
+            "message": "只能包括中文、数字、英文、顿号，括号，逗号，中划线，小数点，斜杠"
+          },
+          "dateInputConfig": {
+            "rangeList": [],
+            "type": ""
+          }
+        },
+        "sortNum": 1,
+        "propInputType": "CHECKBOX",
+        "propName": "功能-男女鞋-1",
+        "required": false
+      }
+    ],
+    "categoryConfig": {
+      "refundRuleList": [
+        8,
+        1
+      ]
+    },
+    "categoryPropSwitch": true
+  }
+}
